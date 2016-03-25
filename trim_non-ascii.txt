@@ -1,0 +1,28 @@
+
+# extracting uncomprehensible (although in the far east meaningfull) lines from a text file
+# [^\x00-\x7F] works as a "non-ascii trimmer" in the slightly adapted expression for the example below
+# more info@ http://stackoverflow.com/questions/2124010/grep-regex-to-match-non-ascii-characters#answer-2124144
+# checked@ http://regexr.com/3d3bo
+
+[ -]*[^\x00-\x7F]*[ \t]*[^\x00-\x7F]+[ \.]*
+
+
+# need to add brackets if the chunks should be deleted/replaced by a replace tool in text editors
+# CRLF is optional at the end of the expression in windows systems
+(([ -]*[^\x00-\x7F]*[ \t]*)[^\x00-\x7F]+[ .]*)\r\n
+
+
+# example block of text to treat
+
+我…我一直…
+I've, um, I've-- I've been...
+
+59
+00:02:23,910 --> 00:02:24,940
+我們...
+W--
+
+60
+00:02:32,280 --> 00:02:35,180
+你還記得我和他去過自我實現小組嗎
+Do you remember when I went to EST with him?
